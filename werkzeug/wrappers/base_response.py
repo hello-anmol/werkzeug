@@ -30,11 +30,14 @@ def _warn_if_string(iterable):
     to the WSGI server is not a string.
     """
     if isinstance(iterable, string_types):
-        warnings.warn(Warning('response iterable was set to a string.  This appears '
-                     'to work but means that the server will send the '
-                     'data to the client char, by char.  This is almost '
-                     'never intended behavior, use response.data to assign '
-                     'strings to the response object.'), stacklevel=2)
+        warnings.warn(
+            "Response iterable was set to a string. This will appear to"
+            " work but means that the server will send the data to the"
+            " client one character at a time. This is almost never"
+            " intended behavior, use 'response.data' to assign strings"
+            " to the response object.",
+            stacklevel=2
+        )
 
 
 def _iter_encoded(iterable, charset):
